@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply plugin: 'com.google.gms.google-services'
 
 import com.android.build.OutputFile
 
@@ -132,7 +133,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.ams"
+        applicationId "com.cmcodes.studify"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -191,6 +192,10 @@ android {
 }
 
 dependencies {
+    implementation 'com.google.firebase:firebase-analytics:17.2.2'
+
+    implementation 'com.google.firebase:firebase-auth:19.3.1'
+    
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules

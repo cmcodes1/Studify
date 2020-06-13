@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "957159333663",
+    "firebase_url": "https://studify-ff128.firebaseio.com",
+    "project_id": "studify-ff128",
+    "storage_bucket": "studify-ff128.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:957159333663:android:8834032ae2cd80d0aa9a2a",
+        "android_client_info": {
+          "package_name": "com.cmcodes.studify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "957159333663-5b3j1umps42ttu870crh8ajera5f8dv7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7gk8RfA1YFuypdvuSdN7ZisonAj_x7Qc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "957159333663-5b3j1umps42ttu870crh8ajera5f8dv7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

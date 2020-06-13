@@ -83,10 +83,10 @@ function Stackfortabs() {
         tabBarIcon: ({ color}) => {
           if (route.name === 'Attendance') {
             return <FontAwesomeIcon icon={faBookmark} size={25} color={color} />;
-          } else if (route.name === 'Time Table') {
-            return <FontAwesomeIcon icon={faNewspaper} size={33} color={color} />;
           } else if (route.name === 'Subjects') {
             return <FontAwesomeIcon icon={faFileAlt} size={25} color={color} />;
+          } else if (route.name === 'Time Table') {
+            return <FontAwesomeIcon icon={faNewspaper} size={33} color={color} />;
           } else if (route.name === 'To Do List') {
             return <FontAwesomeIcon icon={faCheck} size={25} color={color} />;
           } else if (route.name === 'Profile') {
@@ -97,8 +97,8 @@ function Stackfortabs() {
       tabBarOptions={{ activeTintColor: '#24a0ed', inactiveTintColor: 'gray' }}
     >
       <Tab.Screen name="Attendance" component={MarkAttendanceStackScreen} />
-      <Tab.Screen name="Time Table" component={TimeTableStackScreen} />
       <Tab.Screen name="Subjects" component={SubjectsStackScreen} />
+      <Tab.Screen name="Time Table" component={TimeTableStackScreen} />
       <Tab.Screen name="To Do List" component={ToDoListStackScreen} />
       <Tab.Screen name="Profile" component={ProfileStackScreen} />
     </Tab.Navigator>
@@ -106,7 +106,7 @@ function Stackfortabs() {
 }
 
 export default function App() {
-  const isLoggedIn = false;
+  const isLoggedIn = true;
   return (
     <NavigationContainer>
       <LoginStack.Navigator>

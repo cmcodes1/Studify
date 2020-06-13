@@ -57,7 +57,7 @@ export default class ToDoListScreen extends Component {
   }
 
   render() {
-    let cross = "\u2573";
+    let tick = "\u2713";
     return (
       <View style={[styles.container, {paddingBottom: this.state.viewPadding} ]}>
         <FlatList contentContainerStyle={{paddingBottom: 20}}
@@ -69,7 +69,7 @@ export default class ToDoListScreen extends Component {
                 <Text style={[styles.listItem, {paddingLeft: 5} ]}> {item.text} </Text>
                 <View style={styles.buttonContainer}>
                   <View style={styles.button}>
-                    <Button title={cross} onPress={() => this.deleteTask(index)} color="#24a0ed" />
+                    <Button title={tick} onPress={() => this.deleteTask(index)} color="#24a0ed" />
                   </View>
                 </View>
               </View>

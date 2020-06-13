@@ -96,35 +96,38 @@ export default class MarkAttendanceScreen extends Component {
     let tick = "\u2713", cross = "\u2573";
     return (
       <View style={styles.container}>
-        <FlatList style={styles.list} contentContainerStyle={{paddingBottom: 20}}
-          data={this.state.subjects}
-          renderItem={({item, index }) => {
-            return (
-              <View>
-                <View style={styles.listItemCont}>
-                  <Text style={styles.listItem}> { item.text } </Text>
-                  <View style={styles.buttonContainer}>
-                    <Text style={styles.listItem}>{this.state.present_count[index]} / {this.state.total_count[index]} </Text>
-                    <View style={styles.button}>
-                      <Button title={tick} onPress={() => this.present(index)} color="limegreen" />
-                    </View>
-                    <View style={styles.button}>
-                      <Button title={cross} onPress={() => this.total(index)} color="red" />
+        <>
+          {
+            (this.state.present)
+            ?
+            <FlatList style={styles.list} contentContainerStyle={{paddingBottom: 20}}
+              data={this.state.subjects}
+              renderItem={({item, index }) => {
+                return (
+                  <View>
+                    <View style={styles.listItemCont}>
+                      <Text style={styles.listItem}> { item.text } </Text>
+                      <View style={styles.buttonContainer}>
+                        <Text style={styles.listItem}>{this.state.present_count[index]} / {this.state.total_count[index]} </Text>
+                        <View style={styles.button}>
+                          <Button title={tick} onPress={() => this.present(index)} color="limegreen" />
+                        </View>
+                        <View style={styles.button}>
+                          <Button title={cross} onPress={() => this.total(index)} color="red" />
+                        </View>
+                      </View>
                     </View>
                   </View>
-                </View>
-              </View>
-            )
-          }}
-          keyExtractor={ (item, index) => index.toString()}
-          refreshing={ this.state.refreshing }
-          onRefresh={ this.handleRefresh}
-        />
-        <View>
-          <Text>PRESENT { this.state.present.toString() }</Text>
-          <Text>TOTAL { this.state.total.toString() }</Text>
-          <Text>ATTENDANCE { ((this.state.present / this.state.total) * 100).toFixed(2) } %</Text>
-        </View>
+                )
+              }}
+              keyExtractor={ (item, index) => index.toString()}
+              refreshing={ this.state.refreshing }
+              onRefresh={ this.handleRefresh}
+            />
+            :
+            <Text>Go to the Subjects tab & add your subjects first.</Text>
+          }
+        </>
       </View>
     );
   }
