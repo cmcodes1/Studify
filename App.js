@@ -20,6 +20,36 @@ const SubjectsStack = createStackNavigator();
 const ToDoListStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
 
+function Stackfortabs() {
+  return (
+    <Tab.Navigator
+      initialRouteName="Attendance"
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ color}) => {
+          if (route.name === 'Attendance') {
+            return <FontAwesomeIcon icon={faBookmark} size={25} color={color} />;
+          } else if (route.name === 'Subjects') {
+            return <FontAwesomeIcon icon={faFileAlt} size={25} color={color} />;
+          } else if (route.name === 'Time Table') {
+            return <FontAwesomeIcon icon={faNewspaper} size={33} color={color} />;
+          } else if (route.name === 'To Do List') {
+            return <FontAwesomeIcon icon={faCheck} size={25} color={color} />;
+          } else if (route.name === 'Profile') {
+            return <FontAwesomeIcon icon={faUser} size={25} color={color} />;
+          }
+        },
+      })}
+      tabBarOptions={{ activeTintColor: '#24a0ed', inactiveTintColor: 'gray' }}
+    >
+      <Tab.Screen name="Attendance" component={MarkAttendanceStackScreen} />
+      <Tab.Screen name="Subjects" component={SubjectsStackScreen} />
+      <Tab.Screen name="Time Table" component={TimeTableStackScreen} />
+      <Tab.Screen name="To Do List" component={ToDoListStackScreen} />
+      <Tab.Screen name="Profile" component={ProfileStackScreen} />
+    </Tab.Navigator>
+  );
+}
+
 class MarkAttendanceStackScreen extends MarkAttendanceScreen {
   // _onItemPressed() {
   //   this.resetvalues();
@@ -72,36 +102,6 @@ function ProfileStackScreen() {
     <ProfileStack.Navigator>
       <ProfileStack.Screen name="Profile" component={ProfileScreen} />
     </ProfileStack.Navigator>
-  );
-}
-
-function Stackfortabs() {
-  return (
-    <Tab.Navigator
-      initialRouteName="Attendance"
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ color}) => {
-          if (route.name === 'Attendance') {
-            return <FontAwesomeIcon icon={faBookmark} size={25} color={color} />;
-          } else if (route.name === 'Subjects') {
-            return <FontAwesomeIcon icon={faFileAlt} size={25} color={color} />;
-          } else if (route.name === 'Time Table') {
-            return <FontAwesomeIcon icon={faNewspaper} size={33} color={color} />;
-          } else if (route.name === 'To Do List') {
-            return <FontAwesomeIcon icon={faCheck} size={25} color={color} />;
-          } else if (route.name === 'Profile') {
-            return <FontAwesomeIcon icon={faUser} size={25} color={color} />;
-          }
-        },
-      })}
-      tabBarOptions={{ activeTintColor: '#24a0ed', inactiveTintColor: 'gray' }}
-    >
-      <Tab.Screen name="Attendance" component={MarkAttendanceStackScreen} />
-      <Tab.Screen name="Subjects" component={SubjectsStackScreen} />
-      <Tab.Screen name="Time Table" component={TimeTableStackScreen} />
-      <Tab.Screen name="To Do List" component={ToDoListStackScreen} />
-      <Tab.Screen name="Profile" component={ProfileStackScreen} />
-    </Tab.Navigator>
   );
 }
 
