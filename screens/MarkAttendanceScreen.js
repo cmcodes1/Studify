@@ -98,7 +98,7 @@ export default class MarkAttendanceScreen extends Component {
       <View style={styles.container}>
         <>
           {
-            (this.state.present)
+            (this.state.subjects!=null)
             ?
             <FlatList style={styles.list} contentContainerStyle={{paddingBottom: 20}}
               data={this.state.subjects}

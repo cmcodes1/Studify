@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, Button, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, ScrollView, RefreshControl } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import ImagePicker from 'react-native-image-picker';
+
+function fetchData(timeout) {
+  return new Promise(resolve => {
+    setTimeout(resolve, timeout);
+  });
+}
 
 export default class Profile extends Component {
 
@@ -14,6 +20,15 @@ export default class Profile extends Component {
     refreshing: false,
   }
   
+  _onRefresh = () => {
+    this.setState({refreshing: true}, () => {
+      this.componentDidMount();
+    });
+    fetchData().then(() => {
+      this.setState({refreshing: false});
+    });
+  }
+
   saveUsername = () => {
     AsyncStorage.setItem("USERNAME", this.state.username);
   };
@@ -53,18 +68,7 @@ export default class Profile extends Component {
     });
   };
 
-  handleRefresh = () => {
-    this.setState({
-      page: 1,
-      refreshing: true,
-      seed: this.state.seed + 1,
-    }, () => {
-          this.componentDidMount();
-    });
-  };
-
   componentDidMount() {
-    this.setState({ refreshing: false });
     AsyncStorage.getItem('Image_id_2').then((value) => {
       this.setState({dpPath: value});
     });
@@ -92,10 +96,18 @@ export default class Profile extends Component {
   }
 
   render() {
-    var overall_attendance = 0;
-    overall_attendance = ((this.state.present / this.state.total) * 100).toFixed(2);
+    var overall_attendance = ((this.state.present / this.state.total) * 100).toFixed(2);
+    
     return (
-      <View style={styles.container}>
+      <ScrollView
+        refreshControl={
+          <RefreshControl
+            refreshing={this.state.refreshing}
+            onRefresh={this._onRefresh}
+          />
+        }
+      >
+        <View style={styles.container}>
           <View style={styles.header}></View>
           <>
             {
@@ -125,24 +137,20 @@ export default class Profile extends Component {
                     returnKeyLabel = {"next"}
                     onChangeText={(text) => this.setState({username:text})}
                     onSubmitEditing={this.saveUsername}
-                    refreshing={this.state.refreshing}
-                    onRefresh={this.handleRefresh}
                   />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button} >
+                <TouchableOpacity style={styles.button}>
                   <TextInput
                     style={{padding: 5}}
                     alignItems="center"
                     placeholder="Update Bio"
                     returnKeyLabel = {"next"}
                     onChangeText={(text) => this.setState({bio:text})}
-                    onSubmitEditing={this.saveBio}
-                    refreshing={this.state.refreshing}
-                    onRefresh={this.handleRefresh}         
+                    onSubmitEditing={this.saveBio}      
                   />
                 </TouchableOpacity>
               </View>
-              <Text style={styles.listItemCont}>Overall attendance :  { (overall_attendance==NaN) ? overall_attendance : 0} %</Text>
+              <Text style={styles.listItemCont}>Overall attendance :  { (overall_attendance>=0) ? overall_attendance : 0} %</Text>
               <>
                 {
                   (overall_attendance > 60)
@@ -150,11 +158,12 @@ export default class Profile extends Component {
                   <Text style={[styles.listItemCont, {color: "limegreen"}]}>Well done! Keep it up! 👍</Text>
                   :
                   <Text style={[styles.listItemCont, {color: "red"}]}>Don't miss the next class! 🙄</Text>
-                }                
+                }
               </>
             </View>
+          </View>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -194,8 +203,8 @@ const styles = StyleSheet.create({
     marginTop:10
   },
   buttonContainer: {
-    marginTop:40,
-    marginBottom:20,
+    marginTop:20,
+    marginBottom:10,
     flex:1,
     flexDirection: "row",
     justifyContent: 'center',
@@ -213,12 +222,13 @@ const styles = StyleSheet.create({
   listItemCont: {
     marginRight: 5,
     marginLeft: 5,
+    marginBottom: 5,
     marginTop:50,
     width: 315,
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: 'white',
-    padding: 20,
+    padding: 15,
     fontSize: 20,
     borderRadius: 5,
     marginTop: 15,
