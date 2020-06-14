@@ -1,4 +1,4 @@
-package com.studify;
+package com.cmcodes.studify;
 
 import android.app.Application;
 import android.content.Context;

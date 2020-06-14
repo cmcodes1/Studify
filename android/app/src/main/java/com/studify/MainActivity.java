@@ -1,4 +1,4 @@
-package com.studify;
+package com.cmcodes.studify;
 
 import com.facebook.react.ReactActivity;
 
