@@ -92,12 +92,10 @@ export default class Profile extends Component {
         this.setState({ total: JSON.parse(value || this.state.total) });
       }
     });
-    
   }
 
   render() {
     var overall_attendance = ((this.state.present / this.state.total) * 100).toFixed(2);
-    
     return (
       <ScrollView
         refreshControl={

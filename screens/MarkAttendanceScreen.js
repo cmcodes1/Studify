@@ -1,13 +1,19 @@
 import React, {Component} from 'react';
-import {View, Text, Button, StyleSheet, FlatList} from 'react-native';
+import {View, Text, Button, StyleSheet, FlatList, Alert, ScrollView, RefreshControl, SafeAreaView} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
-const initialState = {
-  present_count: [0, 0, 0, 0, 0, 0, 0],
-  total_count: [0, 0, 0, 0, 0, 0, 0],
-  present: 0,
-  total: 0
-};
+// const initialState = {
+//   present_count: [0, 0, 0, 0, 0, 0, 0],
+//   total_count: [0, 0, 0, 0, 0, 0, 0],
+//   present: 0,
+//   total: 0
+// };
+
+function fetchData(timeout) {
+  return new Promise(resolve => {
+    setTimeout(resolve, timeout);
+  });
+}
 
 export default class MarkAttendanceScreen extends Component {
   _isMounted = false;
@@ -17,7 +23,11 @@ export default class MarkAttendanceScreen extends Component {
     this.state = {
       subjects: [],
       text: "",
-      ...initialState,
+      present_count: [0, 0, 0, 0, 0, 0, 0],
+      total_count: [0, 0, 0, 0, 0, 0, 0],
+      present: 0,
+      total: 0,
+      // ...initialState,
       refreshing: false,
     }
   }
@@ -48,19 +58,42 @@ export default class MarkAttendanceScreen extends Component {
     AsyncStorage.setItem("TOTAL", JSON.stringify(total));
   };
 
-  resetvalues = () => { 
-    this.setState({ ...initialState });
+  resetvalues = () => {
+    // Alert.alert("done"); 
+    const resettedCount = [0, 0, 0, 0, 0, 0, 0]
+    let present_count = [...resettedCount];
+    let total_count = [...resettedCount];
+    let present = 0;
+    let total = 0;
+    this.setState({  
+       present_count, total_count,
+       present, total,
+    });
+    
+    AsyncStorage.setItem("PRESENT_COUNT", JSON.stringify(present_count));
+    AsyncStorage.setItem("TOTAL_COUNT", JSON.stringify(total_count));
+    AsyncStorage.setItem("PRESENT", JSON.stringify(present));
+    AsyncStorage.setItem("TOTAL", JSON.stringify(total));
   };
 
-  handleRefresh = () => {
-    this.setState({
-      page: 1,
-      refreshing: true,
-      seed: this.state.seed + 1,
-    }, () => {
-          this.componentDidMount();
+  // handleRefresh = () => {
+  //   this.setState({
+  //     page: 1,
+  //     refreshing: true,
+  //     seed: this.state.seed + 1,
+  //   }, () => {
+  //         this.componentDidMount();
+  //   });
+  // };
+
+  _onRefresh = () => {
+    this.setState({refreshing: true}, () => {
+      this.componentDidMount();
     });
-  };
+    fetchData().then(() => {
+      this.setState({refreshing: false});
+    });
+  }
 
   componentDidMount() {
     this._isMounted = true;
@@ -98,7 +131,7 @@ export default class MarkAttendanceScreen extends Component {
       <View style={styles.container}>
         <>
           {
-            (this.state.subjects!=null)
+            (this.state.subjects!="")
             ?
             <FlatList style={styles.list} contentContainerStyle={{paddingBottom: 20}}
               data={this.state.subjects}
@@ -121,11 +154,20 @@ export default class MarkAttendanceScreen extends Component {
                 )
               }}
               keyExtractor={ (item, index) => index.toString()}
-              refreshing={ this.state.refreshing }
-              onRefresh={ this.handleRefresh}
+              refreshing={this.state.refreshing}
+              onRefresh={this._onRefresh}
             />
             :
-            <Text>Go to the Subjects tab & add your subjects first.</Text>
+            <ScrollView 
+              refreshControl={
+                <RefreshControl
+                  refreshing={this.state.refreshing}
+                  onRefresh={this._onRefresh}
+                />
+              }
+            >
+              <Text style={{marginTop: 250}}>Go to the Subjects tab & add your subjects first.</Text>
+            </ScrollView>
           }
         </>
       </View>

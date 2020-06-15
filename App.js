@@ -23,7 +23,7 @@ const ProfileStack = createStackNavigator();
 function Stackfortabs() {
   return (
     <Tab.Navigator
-      initialRouteName="Attendance"
+      initialRouteName="Profile"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color}) => {
           if (route.name === 'Attendance') {
@@ -51,15 +51,15 @@ function Stackfortabs() {
 }
 
 class MarkAttendanceStackScreen extends MarkAttendanceScreen {
-  // _onItemPressed() {
-  //   this.resetvalues();
-  // }
+  _onItemPressed() {
+    this.resetvalues();
+  }
   render()
   {
     return (
       <MarkAttendanceStack.Navigator>
         <MarkAttendanceStack.Screen name="Mark Attendance" component={MarkAttendanceScreen}
-          // options={{ headerRight: () => ( <Button style={{paddingRight: 5}} onPress={this._onItemPressed.bind(this)} title="Reset" color="#24a0ed" /> ) }}
+          options={{ headerRight: () => ( <Button style={{paddingRight: 5}} onPress={this._onItemPressed.bind(this)} title="Reset" color="#24a0ed" /> ) }}
         />
       </MarkAttendanceStack.Navigator>
     );
