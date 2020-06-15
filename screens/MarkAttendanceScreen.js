@@ -2,12 +2,14 @@ import React, {Component} from 'react';
 import {View, Text, Button, StyleSheet, FlatList, Alert, ScrollView, RefreshControl, SafeAreaView} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
-// const initialState = {
-//   present_count: [0, 0, 0, 0, 0, 0, 0],
-//   total_count: [0, 0, 0, 0, 0, 0, 0],
-//   present: 0,
-//   total: 0
-// };
+const defaultState = {
+  subjects: [],
+  text: "",
+  present_count: [0, 0, 0, 0, 0, 0, 0],
+  total_count: [0, 0, 0, 0, 0, 0, 0],
+  present: 0,
+  total: 0
+}
 
 function fetchData(timeout) {
   return new Promise(resolve => {
@@ -21,13 +23,7 @@ export default class MarkAttendanceScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      subjects: [],
-      text: "",
-      present_count: [0, 0, 0, 0, 0, 0, 0],
-      total_count: [0, 0, 0, 0, 0, 0, 0],
-      present: 0,
-      total: 0,
-      // ...initialState,
+      ...defaultState,
       refreshing: false,
     }
   }
@@ -59,32 +55,12 @@ export default class MarkAttendanceScreen extends Component {
   };
 
   resetvalues = () => {
-    // Alert.alert("done"); 
-    const resettedCount = [0, 0, 0, 0, 0, 0, 0]
-    let present_count = [...resettedCount];
-    let total_count = [...resettedCount];
-    let present = 0;
-    let total = 0;
-    this.setState({  
-       present_count, total_count,
-       present, total,
+    this.setState({
+      ...defaultState,
+      subjects: this.state.subjects,
+      text: this.state.text
     });
-    
-    AsyncStorage.setItem("PRESENT_COUNT", JSON.stringify(present_count));
-    AsyncStorage.setItem("TOTAL_COUNT", JSON.stringify(total_count));
-    AsyncStorage.setItem("PRESENT", JSON.stringify(present));
-    AsyncStorage.setItem("TOTAL", JSON.stringify(total));
   };
-
-  // handleRefresh = () => {
-  //   this.setState({
-  //     page: 1,
-  //     refreshing: true,
-  //     seed: this.state.seed + 1,
-  //   }, () => {
-  //         this.componentDidMount();
-  //   });
-  // };
 
   _onRefresh = () => {
     this.setState({refreshing: true}, () => {
