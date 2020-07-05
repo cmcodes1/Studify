@@ -8,11 +8,11 @@
   <img src="https://img.shields.io/badge/Editor-VS_Code-0078d7.svg" />
   <img src="https://img.shields.io/badge/Framework-React_Native-61dbfb.svg" />
   <img src="https://img.shields.io/badge/Language-HTML,_CSS,_JS-red.svg" /> <br/> <br/> <br/>
-  <img height="600" width="300" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Profile.png" />
-  <img height="600" width="300" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Attendance.png" />
-  <img height="600" width="300" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Subjects.png" /> <br/> <br/>
-  <img height="600" width="300" src="https://github.com/cmcodes1/Studify/blob/master/presentation/To%20Do%20List.png" />
-  <img height="600" width="300" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Subjects.png" />
+  <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/Profile.png" />
+  <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/Attendance.png" />
+  <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/Subjects.png" />
+  <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/To%20Do%20List.png" />
+  <img hsrc="https://github.com/cmcodes1/Studify/blob/master/presentation/Subjects.png" />
 </p>
 
 <!-- <b><h2 align="center">[CLICK HERE TO DOWNLOAD]()</h2></b> -->
