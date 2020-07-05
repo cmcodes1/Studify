@@ -12,7 +12,7 @@
   <img height="800" width="400" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Attendance.png" />
   <img height="800" width="400" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Subjects.png" />
   <img height="800" width="400" src="https://github.com/cmcodes1/Studify/blob/master/presentation/To%20Do%20List.png" />
-  <img height="800" width="400" hsrc="https://github.com/cmcodes1/Studify/blob/master/presentation/Subjects.png" />
+  <img height="800" width="400" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Subjects.png" />
 </p>
 
 <!-- <b><h2 align="center">[CLICK HERE TO DOWNLOAD]()</h2></b> -->
