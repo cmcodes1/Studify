@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, ScrollView, RefreshControl } from 'react-native';
+import {StyleSheet, Text, View, Image, TextInput,
+  TouchableOpacity, ScrollView, RefreshControl }from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import ImagePicker from 'react-native-image-picker';
 
@@ -148,14 +149,17 @@ export default class Profile extends Component {
                   />
                 </TouchableOpacity>
               </View>
-              <Text style={styles.listItemCont}>Overall attendance :  { (overall_attendance>=0) ? overall_attendance : 0} %</Text>
+              <Text style={styles.listItemCont}>Overall attendance :
+               { (overall_attendance>=0) ? overall_attendance : 0} %</Text>
               <>
                 {
                   (overall_attendance > 60)
                   ?
-                  <Text style={[styles.listItemCont, {color: "limegreen"}]}>Well done! Keep it up! 👍</Text>
+                  <Text style={[styles.listItemCont, {color: "limegreen"}]}>
+                    Well done! Keep it up! 👍</Text>
                   :
-                  <Text style={[styles.listItemCont, {color: "red"}]}>Don't miss the next class! 🙄</Text>
+                  <Text style={[styles.listItemCont, {color: "red"}]}>
+                    Don't miss the next class! 🙄</Text>
                 }
               </>
             </View>

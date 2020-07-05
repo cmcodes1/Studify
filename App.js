@@ -59,7 +59,8 @@ class MarkAttendanceStackScreen extends MarkAttendanceScreen {
     return (
       <MarkAttendanceStack.Navigator>
         <MarkAttendanceStack.Screen name="Mark Attendance" component={MarkAttendanceScreen}
-          options={{ headerRight: () => ( <Button style={{paddingRight: 5}} onPress={this._onItemPressed.bind(this)} title="Reset" color="#24a0ed" /> ) }}
+          options={{ headerRight: () => ( <Button style={{paddingRight: 5}}
+            onPress={this._onItemPressed.bind(this)} title="Reset" color="#24a0ed" /> ) }}
         />
       </MarkAttendanceStack.Navigator>
     );
@@ -75,7 +76,8 @@ class TimeTableStackScreen extends TimeTableScreen {
     return (
       <TimeTableStack.Navigator>
         <TimeTableStack.Screen name="Time Table" component={TimeTableScreen}
-          options={{ headerRight: () => ( <Button style={{paddingRight: 5}} onPress={this._onItemPressed.bind(this)} title="Update" color="#24a0ed" /> ) }} />
+          options={{ headerRight: () => ( <Button style={{paddingRight: 5}}
+          onPress={this._onItemPressed.bind(this)} title="Update" color="#24a0ed" /> ) }} />
       </TimeTableStack.Navigator>
     );
   }
@@ -112,7 +114,8 @@ export default function App() {
       <LoginStack.Navigator>
         {
           isLoggedIn ?
-          ( <LoginStack.Screen name="Studify" component={Stackfortabs} options={{ headerShown: false }} /> )
+          ( <LoginStack.Screen name="Studify" component={Stackfortabs}
+          options={{ headerShown: false }} /> )
           :
           ( <LoginStack.Screen name="Login" component={Login} /> )
         }

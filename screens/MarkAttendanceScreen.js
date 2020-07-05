@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, Button, StyleSheet, FlatList, Alert, ScrollView, RefreshControl, SafeAreaView} from 'react-native';
+import {View, Text, Button, StyleSheet, FlatList, ScrollView, RefreshControl} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
 const defaultState = {
@@ -117,7 +117,8 @@ export default class MarkAttendanceScreen extends Component {
                     <View style={styles.listItemCont}>
                       <Text style={styles.listItem}> { item.text } </Text>
                       <View style={styles.buttonContainer}>
-                        <Text style={styles.listItem}>{this.state.present_count[index]} / {this.state.total_count[index]} </Text>
+                        <Text style={styles.listItem}>{this.state.present_count[index]} /
+                        {this.state.total_count[index]} </Text>
                         <View style={styles.button}>
                           <Button title={tick} onPress={() => this.present(index)} color="limegreen" />
                         </View>
@@ -143,6 +144,7 @@ export default class MarkAttendanceScreen extends Component {
               }
             >
               <Text style={{marginTop: 250}}>Go to the Subjects tab & add your subjects first.</Text>
+              <Text style={{marginTop: 270}}>Then come to this tab and pull to refresh.</Text>
             </ScrollView>
           }
         </>
