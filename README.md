@@ -1,4 +1,4 @@
-<h1 align="center"> <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/feature_graphic.PNG" width="1024" height="500"> </h1>
+<h1 align="center"> <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/feature_graphic.PNG" width="800" height="400"> </h1>
 <p align="center">
   Student Utility Mobile App with CRUD functions. <br/> <br/>
   <img src="https://img.shields.io/badge/Platform-Android-brightgreen.svg" />
