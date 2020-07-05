@@ -13,10 +13,10 @@
   <img height="800" width="400" src="https://github.com/cmcodes1/Studify/blob/master/presentation/To%20Do%20List.png" />
   <img height="800" width="400" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Subjects.png" />
   
-  <h2>
-    Pushed to Google Play Console. Will be published and accessible to the public on the Google Play Store within 7 days! ✨<br/>
-    <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/publication.png">
-  </h2>
+  <h3>
+    Pushed to Google Play Console. Will be published and accessible to the public on the Google Play Store within 7 days! ✨ <br/> <br/>
+    <img align="center" src="https://github.com/cmcodes1/Studify/blob/master/presentation/publication.png">
+  </h3>
 </p>
 
 <!-- <b><h2 align="center">[CLICK HERE TO DOWNLOAD]()</h2></b> -->
