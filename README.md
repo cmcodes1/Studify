@@ -7,12 +7,13 @@
   <img src="https://img.shields.io/badge/Editor-VS_Code-0078d7.svg" />
   <img src="https://img.shields.io/badge/Framework-React_Native-61dbfb.svg" />
   <img src="https://img.shields.io/badge/Language-HTML,_CSS,_JS-red.svg" /> <br/> <br/> <br/>
+</p>
+<p>
   <img height="800" width="400" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Profile.png" />
   <img height="800" width="400" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Attendance.png" />
   <img height="800" width="400" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Subjects.png" />
   <img height="800" width="400" src="https://github.com/cmcodes1/Studify/blob/master/presentation/To%20Do%20List.png" />
-  <img height="800" width="400" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Subjects.png" />
-  
+  <img height="800" width="400" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Subjects.png" /> <br/>
   <h2 align="center">
     Pushed to Google Play Console. <br/> Will be published and accessible to the public on the Google Play Store within 7 days! ✨ <br/> <br/>
     <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/publication.png">
