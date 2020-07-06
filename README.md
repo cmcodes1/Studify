@@ -2,7 +2,7 @@
 <p align="center">
   Student Utility Mobile App with CRUD functions. <br/> <br/>
   <img src="https://img.shields.io/badge/Platform-Android-brightgreen.svg" />
-  <img src="https://img.shields.io/badge/Version-0.0.1-green.svg" />
+  <img src="https://img.shields.io/badge/Version-2.0-green.svg" />
   <img src="https://img.shields.io/badge/App_Size-38_MB-orange.svg" />
   <img src="https://img.shields.io/badge/Editor-VS_Code-0078d7.svg" />
   <img src="https://img.shields.io/badge/Framework-React_Native-61dbfb.svg" />
