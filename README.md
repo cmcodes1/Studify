@@ -15,7 +15,7 @@
   <img height="800" width="400" src="https://github.com/cmcodes1/Studify/blob/master/presentation/To%20Do%20List.png" />
   <img height="800" width="400" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Subjects.png" /> <br/>
   <h2 align="center">
-    Pushed to Google Play Console. <br/> Will be published and accessible to the public on the Google Play Store within 7 days! ✨ <br/> <br/>
+    Pushed to Google Play Console. <br/> Will be published and accessible to the public on the Google Play Store soon! ✨ <br/> <br/>
     <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/publication.png">
   </h2>
 </p>
