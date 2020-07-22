@@ -5,7 +5,8 @@
   <img src="https://img.shields.io/badge/Version-2.0-green.svg" />
   <img src="https://img.shields.io/badge/App_Size-38_MB-orange.svg" />
   <img src="https://img.shields.io/badge/Editor-VS_Code-0078d7.svg" />
-  <img src="https://img.shields.io/badge/Framework-React_Native-61dbfb.svg" /> <br/> <br/> <br/>
+  <img src="https://img.shields.io/badge/Framework-React_Native-61dbfb.svg" />
+  <img src="https://img.shields.io/badge/Language-JavaScript-f0db4f.svg" /> <br/> <br/> <br/>
 </p>
 <p>
   <img height="800" width="400" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Profile.png" />
