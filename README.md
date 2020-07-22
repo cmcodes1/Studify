@@ -1,6 +1,6 @@
 <h1 align="center"> <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/feature_graphic.PNG" width="800" height="400"> </h1>
 <p align="center">
-  everything a student need <br/> <br/>
+  everything that a student needs <br/> <br/>
   <img src="https://img.shields.io/badge/Platform-Android-brightgreen.svg" />
   <img src="https://img.shields.io/badge/Version-2.0-green.svg" />
   <img src="https://img.shields.io/badge/App_Size-26_MB-orange.svg" />
