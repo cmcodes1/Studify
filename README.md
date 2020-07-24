@@ -9,11 +9,11 @@
   <img src="https://img.shields.io/badge/Language-JavaScript-f0db4f.svg" /> <br/> <br/> <br/>
 </p>
 <p>
-  <img height="800" width="400" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Profile.png" />
-  <img height="800" width="400" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Attendance.png" />
-  <img height="800" width="400" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Subjects.png" />
-  <img height="800" width="400" src="https://github.com/cmcodes1/Studify/blob/master/presentation/To%20Do%20List.png" />
-  <img height="800" width="400" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Subjects.png" /> <br/>
+  <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/Profile.png" />
+  <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/Attendance.png" />
+  <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/Subjects.png" />
+  <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/To%20Do%20List.png" />
+  <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/Subjects.png" /> <br/>
   <h2 align="center">
     Pushed to Google Play Console. <br/> Will be published and accessible to the public on the Google Play Store soon! ✨ <br/> <br/>
     <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/publication.png">
