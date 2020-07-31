@@ -11,7 +11,7 @@
 <p>
   <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/Profile.png" />
   <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/Attendance.png" />
-  <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/Subjects.png" />
+  <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/Time%20Table.png" />
   <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/To%20Do%20List.png" />
   <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/Subjects.png" /> <br/>
   <h2 align="center">
