@@ -15,4 +15,4 @@
   <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/To%20Do%20List.png" />
   <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/Subjects.png" /> <br/>
 </p>
-<b><h2 align="center">[CLICK HERE TO DOWNLOAD FROM THE PLAY STORE](https://play.google.com/store/apps/details?id=com.cmcodes.studify)</h2></b>
+[CLICK HERE TO DOWNLOAD FROM THE PLAY STORE](https://play.google.com/store/apps/details?id=com.cmcodes.studify "Studify")
