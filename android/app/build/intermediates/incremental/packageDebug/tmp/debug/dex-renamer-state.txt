@@ -1,4 +1,0 @@
-#Tue Jun 16 00:44:02 IST 2020
-base.0=C\:\\Users\\chand\\Documents\\GitHub\\Studify\\android\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
-path.0=classes.dex
-renamed.0=classes.dex
