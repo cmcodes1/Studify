@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
-export default class ToDoListScreen extends Component {
+export default class TasksScreen extends Component {
   state = {
     tasks: [],
     text: '',

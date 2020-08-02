@@ -16,14 +16,14 @@ import Login from './screens/Login';
 import MarkAttendanceScreen from './screens/MarkAttendanceScreen';
 import TimeTableScreen from './screens/TimeTableScreen';
 import SubjectsScreen from './screens/SubjectsScreen';
-import ToDoListScreen from './screens/ToDoListScreen';
+import TasksScreen from './screens/TasksScreen';
 import ProfileScreen from './screens/ProfileScreen';
 const Tab = createBottomTabNavigator();
 const LoginStack = createStackNavigator();
 const MarkAttendanceStack = createStackNavigator();
 const TimeTableStack = createStackNavigator();
 const SubjectsStack = createStackNavigator();
-const ToDoListStack = createStackNavigator();
+const TasksStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
 
 function Stackfortabs() {
@@ -53,7 +53,7 @@ function Stackfortabs() {
       <Tab.Screen name="Attendance" component={MarkAttendanceStackScreen} />
       <Tab.Screen name="Subjects" component={SubjectsStackScreen} />
       <Tab.Screen name="Time Table" component={TimeTableStackScreen} />
-      <Tab.Screen name="To Do List" component={ToDoListStackScreen} />
+      <Tab.Screen name="To Do List" component={TasksStackScreen} />
       <Tab.Screen name="Profile" component={ProfileStackScreen} />
     </Tab.Navigator>
   );
@@ -119,11 +119,11 @@ function SubjectsStackScreen() {
   );
 }
 
-function ToDoListStackScreen() {
+function TasksStackScreen() {
   return (
-    <ToDoListStack.Navigator>
-      <ToDoListStack.Screen name="To Do List" component={ToDoListScreen} />
-    </ToDoListStack.Navigator>
+    <TasksStack.Navigator>
+      <TasksStack.Screen name="To Do List" component={TasksScreen} />
+    </TasksStack.Navigator>
   );
 }
 
