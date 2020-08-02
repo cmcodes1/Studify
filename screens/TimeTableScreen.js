@@ -6,7 +6,7 @@ import ImagePicker from 'react-native-image-picker';
 export default class TimeTableScreen extends Component {
   state = {
     filePath: 'val',
-  }
+  };
 
   chooseFile = () => {
     var options = {
@@ -15,7 +15,7 @@ export default class TimeTableScreen extends Component {
       storageOptions: {
         skipBackup: true,
         path: 'images',
-      }
+      },
     };
 
     ImagePicker.showImagePicker(options, (response) => {
@@ -23,11 +23,9 @@ export default class TimeTableScreen extends Component {
 
       if (response.didCancel) {
         console.log('User cancelled photo picker');
-      }
-      else if (response.error) {
+      } else if (response.error) {
         console.log('ImagePicker Error: ', response.error);
-      }
-      else {
+      } else {
         let source = response;
 
         this.setState({
@@ -41,23 +39,22 @@ export default class TimeTableScreen extends Component {
 
   componentDidMount() {
     AsyncStorage.getItem('Image_id_1').then((value) => {
-      this.setState({filePath:value});
+      this.setState({filePath: value});
     });
   }
 
-  render () { 
+  render() {
     return (
       <View style={styles.container}>
-      {
-        (this.state.filePath)
-        ?
-          <Image
-            source={{ uri: this.state.filePath }}
-            style={ styles.image }
+        {this.state.filePath ? (
+          <Image source={{uri: this.state.filePath}} style={styles.image} />
+        ) : (
+          <Button
+            title="Choose Time Table Photo"
+            onPress={this.chooseFile.bind(this)}
+            color="#24a0ed"
           />
-        :
-        <Button title="Choose Time Table Photo" onPress={this.chooseFile.bind(this)} color="#24a0ed" />
-      }
+        )}
       </View>
     );
   }
@@ -68,11 +65,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   image: {
-    width: "100%",
+    width: '100%',
     aspectRatio: 1,
-    resizeMode: 'contain'
-  }
+    resizeMode: 'contain',
+  },
 });

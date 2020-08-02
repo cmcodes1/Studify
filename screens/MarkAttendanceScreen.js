@@ -1,34 +1,42 @@
 import React, {Component} from 'react';
-import {View, Text, Button, StyleSheet, FlatList, ScrollView, RefreshControl} from 'react-native';
+import {
+  View,
+  Text,
+  Button,
+  StyleSheet,
+  FlatList,
+  ScrollView,
+  RefreshControl,
+} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
 const defaultState = {
   subjects: [],
-  text: "",
+  text: '',
   present_count: [0, 0, 0, 0, 0, 0, 0],
   total_count: [0, 0, 0, 0, 0, 0, 0],
   present: 0,
-  total: 0
-}
+  total: 0,
+};
 
 function fetchData(timeout) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setTimeout(resolve, timeout);
   });
 }
 
 export default class MarkAttendanceScreen extends Component {
   _isMounted = false;
-  
+
   constructor(props) {
     super(props);
     this.state = {
       ...defaultState,
       refreshing: false,
-    }
+    };
   }
 
-  present = i => {
+  present = (i) => {
     let present_count = [...this.state.present_count];
     present_count[i]++;
     let total_count = [...this.state.total_count];
@@ -37,28 +45,28 @@ export default class MarkAttendanceScreen extends Component {
     present++;
     let total = this.state.total;
     total++;
-    this.setState({ present_count, total_count, present, total});
-    AsyncStorage.setItem("PRESENT_COUNT", JSON.stringify(present_count));
-    AsyncStorage.setItem("TOTAL_COUNT", JSON.stringify(total_count));
-    AsyncStorage.setItem("PRESENT", JSON.stringify(present));
-    AsyncStorage.setItem("TOTAL", JSON.stringify(total));
+    this.setState({present_count, total_count, present, total});
+    AsyncStorage.setItem('PRESENT_COUNT', JSON.stringify(present_count));
+    AsyncStorage.setItem('TOTAL_COUNT', JSON.stringify(total_count));
+    AsyncStorage.setItem('PRESENT', JSON.stringify(present));
+    AsyncStorage.setItem('TOTAL', JSON.stringify(total));
   };
 
-  total = i => {
+  total = (i) => {
     let total_count = [...this.state.total_count];
     total_count[i]++;
     let total = this.state.total;
     total++;
-    this.setState({ total_count, total});
-    AsyncStorage.setItem("TOTAL_COUNT", JSON.stringify(total_count));
-    AsyncStorage.setItem("TOTAL", JSON.stringify(total));
+    this.setState({total_count, total});
+    AsyncStorage.setItem('TOTAL_COUNT', JSON.stringify(total_count));
+    AsyncStorage.setItem('TOTAL', JSON.stringify(total));
   };
 
   resetvalues = () => {
     this.setState({
       ...defaultState,
       subjects: this.state.subjects,
-      text: this.state.text
+      text: this.state.text,
     });
   };
 
@@ -69,30 +77,34 @@ export default class MarkAttendanceScreen extends Component {
     fetchData().then(() => {
       this.setState({refreshing: false});
     });
-  }
+  };
 
   componentDidMount() {
     this._isMounted = true;
-    this.setState({ refreshing: false });
-    Subjects.all(subjects => this.setState({ subjects: subjects || [] }));
-    AsyncStorage.getItem("PRESENT_COUNT").then((value) => {
-      if(value) {
-        this.setState({ present_count: JSON.parse(value || this.state.present_count) });
+    this.setState({refreshing: false});
+    Subjects.all((subjects) => this.setState({subjects: subjects || []}));
+    AsyncStorage.getItem('PRESENT_COUNT').then((value) => {
+      if (value) {
+        this.setState({
+          present_count: JSON.parse(value || this.state.present_count),
+        });
       }
     });
-    AsyncStorage.getItem("TOTAL_COUNT").then((value) => {
-      if(value) {
-        this.setState({ total_count: JSON.parse(value || this.state.total_count) });
+    AsyncStorage.getItem('TOTAL_COUNT').then((value) => {
+      if (value) {
+        this.setState({
+          total_count: JSON.parse(value || this.state.total_count),
+        });
       }
     });
-    AsyncStorage.getItem("PRESENT").then((value) => {
-      if(value) {
-        this.setState({ present: JSON.parse(value || this.state.present) });
+    AsyncStorage.getItem('PRESENT').then((value) => {
+      if (value) {
+        this.setState({present: JSON.parse(value || this.state.present)});
       }
     });
-    AsyncStorage.getItem("TOTAL").then((value) => {
-      if(value) {
-        this.setState({ total: JSON.parse(value || this.state.total) });
+    AsyncStorage.getItem('TOTAL').then((value) => {
+      if (value) {
+        this.setState({total: JSON.parse(value || this.state.total)});
       }
     });
   }
@@ -102,51 +114,65 @@ export default class MarkAttendanceScreen extends Component {
   }
 
   render() {
-    let tick = "\u2713", cross = "\u2573";
+    let tick = '\u2713',
+      cross = '\u2573';
     return (
       <View style={styles.container}>
         <>
-          {
-            (this.state.subjects!="")
-            ?
-            <FlatList style={styles.list} contentContainerStyle={{paddingBottom: 20}}
+          {this.state.subjects != '' ? (
+            <FlatList
+              style={styles.list}
+              contentContainerStyle={{paddingBottom: 20}}
               data={this.state.subjects}
-              renderItem={({item, index }) => {
+              renderItem={({item, index}) => {
                 return (
                   <View>
                     <View style={styles.listItemCont}>
-                      <Text style={styles.listItem}> { item.text } </Text>
+                      <Text style={styles.listItem}> {item.text} </Text>
                       <View style={styles.buttonContainer}>
-                        <Text style={styles.listItem}>{this.state.present_count[index]} /
-                        {this.state.total_count[index]} </Text>
+                        <Text style={styles.listItem}>
+                          {this.state.present_count[index]} /
+                          {this.state.total_count[index]}{' '}
+                        </Text>
                         <View style={styles.button}>
-                          <Button title={tick} onPress={() => this.present(index)} color="limegreen" />
+                          <Button
+                            title={tick}
+                            onPress={() => this.present(index)}
+                            color="limegreen"
+                          />
                         </View>
                         <View style={styles.button}>
-                          <Button title={cross} onPress={() => this.total(index)} color="red" />
+                          <Button
+                            title={cross}
+                            onPress={() => this.total(index)}
+                            color="red"
+                          />
                         </View>
                       </View>
                     </View>
                   </View>
-                )
+                );
               }}
-              keyExtractor={ (item, index) => index.toString()}
+              keyExtractor={(item, index) => index.toString()}
               refreshing={this.state.refreshing}
               onRefresh={this._onRefresh}
             />
-            :
-            <ScrollView 
+          ) : (
+            <ScrollView
               refreshControl={
                 <RefreshControl
                   refreshing={this.state.refreshing}
                   onRefresh={this._onRefresh}
                 />
-              }
-            >
-              <Text style={{marginTop: 250}}>Go to the Subjects tab & add your subjects first.</Text>
-              <Text style={{marginTop: 270}}>Then come to this tab and pull to refresh.</Text>
+              }>
+              <Text style={{marginTop: 250}}>
+                Go to the Subjects tab & add your subjects first.
+              </Text>
+              <Text style={{marginTop: 270}}>
+                Then come to this tab and pull to refresh.
+              </Text>
             </ScrollView>
-          }
+          )}
         </>
       </View>
     );
@@ -156,15 +182,17 @@ export default class MarkAttendanceScreen extends Component {
 let Subjects = {
   convertToArrayOfObject(subjects, callback) {
     return callback(
-    subjects ? subjects.split("\n").map((subject, i) => ({ key: i, text: subject})) : []
+      subjects
+        ? subjects.split('\n').map((subject, i) => ({key: i, text: subject}))
+        : [],
     );
   },
   convertToStringWithSeparators(subjects) {
-    return subjects.map(subject => subject.text).join("\n");
+    return subjects.map((subject) => subject.text).join('\n');
   },
   all(callback) {
-    return AsyncStorage.getItem("SUBJECTS", (err, subjects) =>
-    this.convertToArrayOfObject(subjects, callback)
+    return AsyncStorage.getItem('SUBJECTS', (err, subjects) =>
+      this.convertToArrayOfObject(subjects, callback),
     );
   },
 };
@@ -174,22 +202,22 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   list: {
     flex: 1,
-    width: "95%"
+    width: '95%',
   },
   listItemCont: {
     marginRight: 5,
     marginLeft: 5,
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     backgroundColor: 'white',
     borderRadius: 10,
     marginTop: 15,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
@@ -198,18 +226,18 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     paddingBottom: 15,
     paddingLeft: 5,
-    fontSize: 20
+    fontSize: 20,
   },
   buttonContainer: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    marginRight: 10
+    marginRight: 10,
   },
   button: {
     paddingTop: 10,
     paddingLeft: 10,
     width: 50,
-    height: 20, 
-  }
+    height: 20,
+  },
 });
