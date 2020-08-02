@@ -14,10 +14,5 @@
   <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/Time%20Table.png" />
   <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/To%20Do%20List.png" />
   <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/Subjects.png" /> <br/>
-  <h2 align="center">
-    Pushed to Google Play Console. <br/> Will be published and accessible to the public on the Google Play Store soon! ✨ <br/> <br/>
-    <img src="https://github.com/cmcodes1/Studify/blob/master/presentation/publication.png">
-  </h2>
 </p>
-
-<!-- <b><h2 align="center">[CLICK HERE TO DOWNLOAD]()</h2></b> -->
+<b><h2 align="center">[CLICK HERE TO DOWNLOAD FROM THE PLAY STORE](https://play.google.com/store/apps/details?id=com.cmcodes.studify)</h2></b>
