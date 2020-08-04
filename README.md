@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/badge/Framework-React_Native-61dbfb.svg" />
   <img src="https://img.shields.io/badge/Language-JavaScript-f0db4f.svg" /> <br/> <br/> <br/>
 </p>
-<p>
+<p align="center">
   <img height="600px" width="300px" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Profile.png" />
   <img height="600px" width="300px" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Attendance.png" />
   <img height="600px" width="300px" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Time%20Table.png" />
