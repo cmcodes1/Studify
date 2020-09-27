@@ -1,10 +1,10 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import {Button} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import { Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import {
   faBookmark,
   faNewspaper,
@@ -30,8 +30,8 @@ function Stackfortabs() {
   return (
     <Tab.Navigator
       initialRouteName="Profile"
-      screenOptions={({route}) => ({
-        tabBarIcon: ({color}) => {
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ color }) => {
           if (route.name === 'Attendance') {
             return (
               <FontAwesomeIcon icon={faBookmark} size={25} color={color} />
@@ -49,7 +49,8 @@ function Stackfortabs() {
           }
         },
       })}
-      tabBarOptions={{activeTintColor: '#24a0ed', inactiveTintColor: 'gray'}}>
+      tabBarOptions={{ activeTintColor: '#24a0ed', inactiveTintColor: 'gray' }}
+    >
       <Tab.Screen name="Attendance" component={MarkAttendanceStackScreen} />
       <Tab.Screen name="Subjects" component={SubjectsStackScreen} />
       <Tab.Screen name="Time Table" component={TimeTableStackScreen} />
@@ -72,7 +73,7 @@ class MarkAttendanceStackScreen extends MarkAttendanceScreen {
           options={{
             headerRight: () => (
               <Button
-                style={{paddingRight: 5}}
+                style={{ paddingRight: 5 }}
                 onPress={this._onItemPressed.bind(this)}
                 title="Reset"
                 color="#24a0ed"
@@ -98,7 +99,7 @@ class TimeTableStackScreen extends TimeTableScreen {
           options={{
             headerRight: () => (
               <Button
-                style={{paddingRight: 5}}
+                style={{ paddingRight: 5 }}
                 onPress={this._onItemPressed.bind(this)}
                 title="Update"
                 color="#24a0ed"
@@ -144,11 +145,11 @@ export default function App() {
           <LoginStack.Screen
             name="Studify"
             component={Stackfortabs}
-            options={{headerShown: false}}
+            options={{ headerShown: false }}
           />
         ) : (
-          <LoginStack.Screen name="Login" component={Login} />
-        )}
+            <LoginStack.Screen name="Login" component={Login} />
+          )}
       </LoginStack.Navigator>
     </NavigationContainer>
   );
