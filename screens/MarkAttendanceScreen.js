@@ -1,20 +1,12 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Text,
-  Button,
-  StyleSheet,
-  FlatList,
-  ScrollView,
-  RefreshControl,
-} from 'react-native';
+import { View, Text, Button, StyleSheet, FlatList, ScrollView, RefreshControl, } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
 const defaultState = {
   subjects: [],
   text: '',
-  present_count: [0, 0, 0, 0, 0, 0, 0],
-  total_count: [0, 0, 0, 0, 0, 0, 0],
+  present_count: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  total_count: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   present: 0,
   total: 0,
 };
