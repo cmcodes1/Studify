@@ -69,7 +69,7 @@ export default class TasksScreen extends Component {
   render() {
     let tick = '\u2713';
     return (
-      <View style={[styles.container, { paddingBottom: this.state.viewPadding }]}>
+      <View style={styles.container}>
         <FlatList
           contentContainerStyle={{ paddingBottom: 20 }}
           style={styles.list}

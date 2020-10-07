@@ -69,7 +69,7 @@ export default class SubjectsScreen extends Component {
   render() {
     let cross = '\u2573';
     return (
-      <View style={[styles.container, { paddingBottom: this.state.viewPadding }]}>
+      <View style={styles.container}>
         <FlatList
           contentContainerStyle={{ paddingBottom: 20 }}
           style={styles.list}
