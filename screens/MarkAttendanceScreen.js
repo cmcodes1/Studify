@@ -128,9 +128,9 @@ export default class MarkAttendanceScreen extends Component {
               ?
               (
                 <>
-                  <View style={{ backgroundColor: "#24a0ed", width: "100%", flexDirection: "row", alignItems: "center", }}>
+                  <View style={styles.dateContainer}>
                     <View style={{ flex: 1, alignItems: "flex-end" }}>
-                      <Text style={{ fontSize: 50, color: "#fff" }}>{date}</Text>
+                      <Text style={styles.date}>{date}</Text>
                     </View>
                     <View style={{ flex: 0.05 }}>
                     </View>
@@ -149,8 +149,7 @@ export default class MarkAttendanceScreen extends Component {
                             <Text style={styles.listItem}> {item.text} </Text>
                             <View style={styles.buttonContainer}>
                               <Text style={styles.listItem}>
-                                {this.state.present_count[index]} /
-                          {this.state.total_count[index]}{' '}
+                                {this.state.present_count[index]} {"/"} {this.state.total_count[index]}{' '}
                               </Text>
                               <View style={styles.button}>
                                 <Button
@@ -191,7 +190,7 @@ export default class MarkAttendanceScreen extends Component {
                 </ScrollView>
               )}
         </>
-      </View>
+      </View >
     );
   }
 }
@@ -220,6 +219,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
+  },
+  dateContainer: {
+    backgroundColor: "#24a0ed",
+    width: "100%",
+    paddingTop: 10,
+    paddingBottom: 10,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  date: {
+    textAlign: 'center',
+    fontSize: 22,
+    fontWeight: "bold",
+    padding: 12,
+    color: "#fff",
+    borderWidth: 2,
+    borderColor: "#fff",
+    borderRadius: 50,
   },
   list: {
     flex: 1,
