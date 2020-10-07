@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -18,7 +18,7 @@ export default class TasksScreen extends Component {
   };
 
   changeTextHandler = (text) => {
-    this.setState({text: text});
+    this.setState({ text: text });
   };
 
   addTask = () => {
@@ -27,9 +27,9 @@ export default class TasksScreen extends Component {
     if (notEmpty) {
       this.setState(
         (prevState) => {
-          let {tasks, text} = prevState;
+          let { tasks, text } = prevState;
           return {
-            tasks: tasks.concat({key: tasks.length, text: text}),
+            tasks: tasks.concat({ key: tasks.length, text: text }),
             text: '',
           };
         },
@@ -45,7 +45,7 @@ export default class TasksScreen extends Component {
 
         tasks.splice(i, 1);
 
-        return {tasks: tasks};
+        return { tasks: tasks };
       },
       () => Tasks.save(this.state.tasks),
     );
@@ -55,29 +55,29 @@ export default class TasksScreen extends Component {
     Keyboard.addListener(
       isAndroid ? 'keyboardDidShow' : 'keyboardWillShow',
       (e) =>
-        this.setState({viewPadding: e.endCoordinates.height + viewPadding}),
+        this.setState({ viewPadding: e.endCoordinates.height + viewPadding }),
     );
 
     Keyboard.addListener(
       isAndroid ? 'keyboardDidHide' : 'keyboardWillHide',
-      () => this.setState({viewPadding: viewPadding}),
+      () => this.setState({ viewPadding: viewPadding }),
     );
 
-    Tasks.all((tasks) => this.setState({tasks: tasks || []}));
+    Tasks.all((tasks) => this.setState({ tasks: tasks || [] }));
   }
 
   render() {
     let tick = '\u2713';
     return (
-      <View style={[styles.container, {paddingBottom: this.state.viewPadding}]}>
+      <View style={[styles.container, { paddingBottom: this.state.viewPadding }]}>
         <FlatList
-          contentContainerStyle={{paddingBottom: 20}}
+          contentContainerStyle={{ paddingBottom: 20 }}
           style={styles.list}
           data={this.state.tasks}
-          renderItem={({item, index}) => (
+          renderItem={({ item, index }) => (
             <View>
               <View style={styles.listItemCont}>
-                <Text style={[styles.listItem, {paddingLeft: 5}]}>
+                <Text style={[styles.listItem, { paddingLeft: 5 }]}>
                   {' '}
                   {item.text}{' '}
                 </Text>
@@ -113,7 +113,7 @@ export default class TasksScreen extends Component {
 let Tasks = {
   convertToArrayOfObject(tasks, callback) {
     return callback(
-      tasks ? tasks.split('||').map((task, i) => ({key: i, text: task})) : [],
+      tasks ? tasks.split('||').map((task, i) => ({ key: i, text: task })) : [],
     );
   },
   convertToStringWithSeparators(tasks) {
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 15,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
