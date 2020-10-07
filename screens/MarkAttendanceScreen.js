@@ -17,6 +17,15 @@ function fetchData(timeout) {
   });
 }
 
+// const [currentDate, setCurrentDate] = useState('');
+
+// useEffect(() => {
+//   var date = new Date().getDate(); //Current Date
+//   var month = new Date().getMonth() + 1; //Current Month
+//   var year = new Date().getFullYear(); //Current Year
+//   setCurrentDate(date + '/' + month + '/' + year + ' ' + hours + ':' + min + ':' + sec);
+// }, []);
+
 export default class MarkAttendanceScreen extends Component {
   _isMounted = false;
 
@@ -107,61 +116,80 @@ export default class MarkAttendanceScreen extends Component {
 
   render() {
     let tick = '\u2713', cross = '\u2573';
+    var date = new Date().getDate();
+    var month = new Date().getMonth();
+    var year = new Date().getFullYear();
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     return (
       <View style={styles.container}>
         <>
-          {this.state.subjects != '' ? (
-            <FlatList
-              style={styles.list}
-              contentContainerStyle={{ paddingBottom: 20 }}
-              data={this.state.subjects}
-              renderItem={({ item, index }) => {
-                return (
-                  <View>
-                    <View style={styles.listItemCont}>
-                      <Text style={styles.listItem}> {item.text} </Text>
-                      <View style={styles.buttonContainer}>
-                        <Text style={styles.listItem}>
-                          {this.state.present_count[index]} /
-                          {this.state.total_count[index]}{' '}
-                        </Text>
-                        <View style={styles.button}>
-                          <Button
-                            title={tick}
-                            onPress={() => this.present(index)}
-                            color="limegreen"
-                          />
-                        </View>
-                        <View style={styles.button}>
-                          <Button
-                            title={cross}
-                            onPress={() => this.total(index)}
-                            color="red"
-                          />
-                        </View>
-                      </View>
+          {
+            this.state.subjects != ''
+              ?
+              (
+                <>
+                  <View style={{ backgroundColor: "#24a0ed", width: "100%", flexDirection: "row", alignItems: "center", }}>
+                    <View style={{ flex: 1, alignItems: "flex-end" }}>
+                      <Text style={{ fontSize: 50, color: "#fff" }}>{date}</Text>
+                    </View>
+                    <View style={{ flex: 0.05 }}>
+                    </View>
+                    <View style={{ flex: 1, alignItems: "flex-start" }}>
+                      <Text style={{ fontSize: 20, color: "#fff", }}>{monthNames[month]}{"\n"}{year}</Text>
                     </View>
                   </View>
-                );
-              }}
-              keyExtractor={(item, index) => index.toString()}
-              refreshing={this.state.refreshing}
-              onRefresh={this._onRefresh}
-            />
-          ) : (
-              <ScrollView
-                showsVerticalScrollIndicator={false}
-                refreshControl={
-                  <RefreshControl
+                  <FlatList
+                    style={styles.list}
+                    contentContainerStyle={{ paddingBottom: 20 }}
+                    data={this.state.subjects}
+                    renderItem={({ item, index }) => {
+                      return (
+                        <View>
+                          <View style={styles.listItemCont}>
+                            <Text style={styles.listItem}> {item.text} </Text>
+                            <View style={styles.buttonContainer}>
+                              <Text style={styles.listItem}>
+                                {this.state.present_count[index]} /
+                          {this.state.total_count[index]}{' '}
+                              </Text>
+                              <View style={styles.button}>
+                                <Button
+                                  title={tick}
+                                  onPress={() => this.present(index)}
+                                  color="limegreen"
+                                />
+                              </View>
+                              <View style={styles.button}>
+                                <Button
+                                  title={cross}
+                                  onPress={() => this.total(index)}
+                                  color="red"
+                                />
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                      );
+                    }}
+                    keyExtractor={(item, index) => index.toString()}
                     refreshing={this.state.refreshing}
                     onRefresh={this._onRefresh}
                   />
-                }>
-                <Text style={{ textAlign: 'center', marginTop: 250 }}>
-                  Go to the Subjects tab & add your subjects first.{"\n"}Then come to this tab and pull to refresh.
+                </>
+              ) : (
+                <ScrollView
+                  showsVerticalScrollIndicator={false}
+                  refreshControl={
+                    <RefreshControl
+                      refreshing={this.state.refreshing}
+                      onRefresh={this._onRefresh}
+                    />
+                  }>
+                  <Text style={{ textAlign: 'center', marginTop: 250 }}>
+                    Go to the Subjects tab & add your subjects first.{"\n"}Then come to this tab and pull to refresh.
                 </Text>
-              </ScrollView>
-            )}
+                </ScrollView>
+              )}
         </>
       </View>
     );
