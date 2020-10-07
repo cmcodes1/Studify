@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {View, Button, StyleSheet, Image} from 'react-native';
+import React, { Component } from 'react';
+import { View, Button, StyleSheet, Image } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import ImagePicker from 'react-native-image-picker';
 
@@ -39,7 +39,7 @@ export default class TimeTableScreen extends Component {
 
   componentDidMount() {
     AsyncStorage.getItem('Image_id_1').then((value) => {
-      this.setState({filePath: value});
+      this.setState({ filePath: value });
     });
   }
 
@@ -47,14 +47,14 @@ export default class TimeTableScreen extends Component {
     return (
       <View style={styles.container}>
         {this.state.filePath ? (
-          <Image source={{uri: this.state.filePath}} style={styles.image} />
+          <Image source={{ uri: this.state.filePath }} style={styles.image} />
         ) : (
-          <Button
-            title="Choose Time Table Photo"
-            onPress={this.chooseFile.bind(this)}
-            color="#24a0ed"
-          />
-        )}
+            <Button
+              title="Choose Time Table Photo"
+              onPress={this.chooseFile.bind(this)}
+              color="#24a0ed"
+            />
+          )}
       </View>
     );
   }

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -45,7 +45,7 @@ export default class MarkAttendanceScreen extends Component {
     present++;
     let total = this.state.total;
     total++;
-    this.setState({present_count, total_count, present, total});
+    this.setState({ present_count, total_count, present, total });
     AsyncStorage.setItem('PRESENT_COUNT', JSON.stringify(present_count));
     AsyncStorage.setItem('TOTAL_COUNT', JSON.stringify(total_count));
     AsyncStorage.setItem('PRESENT', JSON.stringify(present));
@@ -57,7 +57,7 @@ export default class MarkAttendanceScreen extends Component {
     total_count[i]++;
     let total = this.state.total;
     total++;
-    this.setState({total_count, total});
+    this.setState({ total_count, total });
     AsyncStorage.setItem('TOTAL_COUNT', JSON.stringify(total_count));
     AsyncStorage.setItem('TOTAL', JSON.stringify(total));
   };
@@ -71,18 +71,18 @@ export default class MarkAttendanceScreen extends Component {
   };
 
   _onRefresh = () => {
-    this.setState({refreshing: true}, () => {
+    this.setState({ refreshing: true }, () => {
       this.componentDidMount();
     });
     fetchData().then(() => {
-      this.setState({refreshing: false});
+      this.setState({ refreshing: false });
     });
   };
 
   componentDidMount() {
     this._isMounted = true;
-    this.setState({refreshing: false});
-    Subjects.all((subjects) => this.setState({subjects: subjects || []}));
+    this.setState({ refreshing: false });
+    Subjects.all((subjects) => this.setState({ subjects: subjects || [] }));
     AsyncStorage.getItem('PRESENT_COUNT').then((value) => {
       if (value) {
         this.setState({
@@ -99,12 +99,12 @@ export default class MarkAttendanceScreen extends Component {
     });
     AsyncStorage.getItem('PRESENT').then((value) => {
       if (value) {
-        this.setState({present: JSON.parse(value || this.state.present)});
+        this.setState({ present: JSON.parse(value || this.state.present) });
       }
     });
     AsyncStorage.getItem('TOTAL').then((value) => {
       if (value) {
-        this.setState({total: JSON.parse(value || this.state.total)});
+        this.setState({ total: JSON.parse(value || this.state.total) });
       }
     });
   }
@@ -114,17 +114,16 @@ export default class MarkAttendanceScreen extends Component {
   }
 
   render() {
-    let tick = '\u2713',
-      cross = '\u2573';
+    let tick = '\u2713', cross = '\u2573';
     return (
       <View style={styles.container}>
         <>
           {this.state.subjects != '' ? (
             <FlatList
               style={styles.list}
-              contentContainerStyle={{paddingBottom: 20}}
+              contentContainerStyle={{ paddingBottom: 20 }}
               data={this.state.subjects}
-              renderItem={({item, index}) => {
+              renderItem={({ item, index }) => {
                 return (
                   <View>
                     <View style={styles.listItemCont}>
@@ -158,21 +157,19 @@ export default class MarkAttendanceScreen extends Component {
               onRefresh={this._onRefresh}
             />
           ) : (
-            <ScrollView
-              refreshControl={
-                <RefreshControl
-                  refreshing={this.state.refreshing}
-                  onRefresh={this._onRefresh}
-                />
-              }>
-              <Text style={{marginTop: 250}}>
-                Go to the Subjects tab & add your subjects first.
-              </Text>
-              <Text style={{marginTop: 270}}>
-                Then come to this tab and pull to refresh.
-              </Text>
-            </ScrollView>
-          )}
+              <ScrollView
+                showsVerticalScrollIndicator={false}
+                refreshControl={
+                  <RefreshControl
+                    refreshing={this.state.refreshing}
+                    onRefresh={this._onRefresh}
+                  />
+                }>
+                <Text style={{ textAlign: 'center', marginTop: 250 }}>
+                  Go to the Subjects tab & add your subjects first.{"\n"}Then come to this tab and pull to refresh.
+                </Text>
+              </ScrollView>
+            )}
         </>
       </View>
     );
@@ -183,7 +180,7 @@ let Subjects = {
   convertToArrayOfObject(subjects, callback) {
     return callback(
       subjects
-        ? subjects.split('\n').map((subject, i) => ({key: i, text: subject}))
+        ? subjects.split('\n').map((subject, i) => ({ key: i, text: subject }))
         : [],
     );
   },
@@ -217,7 +214,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 15,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,

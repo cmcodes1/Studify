@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -18,7 +18,7 @@ export default class SubjectsScreen extends Component {
   };
 
   changeTextHandler = (text) => {
-    this.setState({text: text});
+    this.setState({ text: text });
   };
 
   addSubject = () => {
@@ -27,9 +27,9 @@ export default class SubjectsScreen extends Component {
     if (notEmpty) {
       this.setState(
         (prevState) => {
-          let {subjects, text} = prevState;
+          let { subjects, text } = prevState;
           return {
-            subjects: subjects.concat({key: subjects.length, text: text}),
+            subjects: subjects.concat({ key: subjects.length, text: text }),
             text: '',
           };
         },
@@ -45,7 +45,7 @@ export default class SubjectsScreen extends Component {
 
         subjects.splice(i, 1);
 
-        return {subjects: subjects};
+        return { subjects: subjects };
       },
       () => Subjects.save(this.state.subjects),
     );
@@ -55,29 +55,29 @@ export default class SubjectsScreen extends Component {
     Keyboard.addListener(
       isAndroid ? 'keyboardDidShow' : 'keyboardWillShow',
       (e) =>
-        this.setState({viewPadding: e.endCoordinates.height + viewPadding}),
+        this.setState({ viewPadding: e.endCoordinates.height + viewPadding }),
     );
 
     Keyboard.addListener(
       isAndroid ? 'keyboardDidHide' : 'keyboardWillHide',
-      () => this.setState({viewPadding: viewPadding}),
+      () => this.setState({ viewPadding: viewPadding }),
     );
 
-    Subjects.all((subjects) => this.setState({subjects: subjects || []}));
+    Subjects.all((subjects) => this.setState({ subjects: subjects || [] }));
   }
 
   render() {
     let cross = '\u2573';
     return (
-      <View style={[styles.container, {paddingBottom: this.state.viewPadding}]}>
+      <View style={[styles.container, { paddingBottom: this.state.viewPadding }]}>
         <FlatList
-          contentContainerStyle={{paddingBottom: 20}}
+          contentContainerStyle={{ paddingBottom: 20 }}
           style={styles.list}
           data={this.state.subjects}
-          renderItem={({item, index}) => (
+          renderItem={({ item, index }) => (
             <View>
               <View style={styles.listItemCont}>
-                <Text style={[styles.listItem, {paddingLeft: 5}]}>
+                <Text style={[styles.listItem, { paddingLeft: 5 }]}>
                   {' '}
                   {item.text}{' '}
                 </Text>
@@ -113,7 +113,7 @@ let Subjects = {
   convertToArrayOfObject(subjects, callback) {
     return callback(
       subjects
-        ? subjects.split('\n').map((subject, i) => ({key: i, text: subject}))
+        ? subjects.split('\n').map((subject, i) => ({ key: i, text: subject }))
         : [],
     );
   },
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 15,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
