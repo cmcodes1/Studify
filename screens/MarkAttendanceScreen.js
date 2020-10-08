@@ -180,7 +180,7 @@ export default class MarkAttendanceScreen extends Component {
                   }>
                   <Text style={{ textAlign: 'center', marginTop: 250 }}>
                     Go to the Subjects tab & add your subjects first.{"\n"}Then come to this tab and pull to refresh.
-                </Text>
+                  </Text>
                 </ScrollView>
               )
           }
