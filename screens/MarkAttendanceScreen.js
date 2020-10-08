@@ -106,8 +106,8 @@ export default class MarkAttendanceScreen extends Component {
     let tick = '\u2713', cross = '\u2573';
     var date = new Date().getDate();
     var month = new Date().getMonth();
-    var year = new Date().getFullYear();
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var year = new Date().getFullYear();
     return (
       <View style={styles.container}>
         <>

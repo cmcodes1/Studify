@@ -14,9 +14,7 @@ export default class TimeTableScreen extends Component {
 
   constructor() {
     super();
-    this.state = {
-      filePath: 'val',
-    };
+    this.state = { filePath: 'val' };
   }
 
   _onRefresh = () => {
@@ -57,7 +55,6 @@ export default class TimeTableScreen extends Component {
     var minute = new Date().getMinutes();
     var timezone = new Date().toString().match(/\(([A-Za-z\s].*)\)/)[1];
     var parts = timezone.split(' '); var tz = ""; parts.forEach(function (element) { tz += element.substring(0, 1); });
-
     return (
       <>
         {
