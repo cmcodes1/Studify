@@ -14,8 +14,6 @@ export default class Player extends Component {
       totalLength: 1,
       currentPosition: 0,
       selectedTrack: 0,
-      repeatOn: false,
-      shuffleOn: false,
     };
   }
 
@@ -88,18 +86,16 @@ export default class Player extends Component {
           onSeek={this.seek.bind(this)}
           trackLength={this.state.totalLength}
           onSlidingStart={() => this.setState({ paused: true })}
-          currentPosition={this.state.currentPosition} />
+          currentPosition={this.state.currentPosition}
+        />
         <Controls
-          onPressRepeat={() => this.setState({ repeatOn: !this.state.repeatOn })}
-          repeatOn={this.state.repeatOn}
-          shuffleOn={this.state.shuffleOn}
           forwardDisabled={this.state.selectedTrack === this.props.tracks.length - 1}
-          onPressShuffle={() => this.setState({ shuffleOn: !this.state.shuffleOn })}
           onPressPlay={() => this.setState({ paused: false })}
           onPressPause={() => this.setState({ paused: true })}
           onBack={this.onBack.bind(this)}
           onForward={this.onForward.bind(this)}
-          paused={this.state.paused} />
+          paused={this.state.paused}
+        />
         {video}
       </View>
     );
