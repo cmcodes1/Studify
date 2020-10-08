@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, ScrollView, RefreshControl, } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, ScrollView, RefreshControl } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import ImagePicker from 'react-native-image-picker';
 
@@ -31,38 +31,25 @@ export default class Profile extends Component {
     });
   };
 
-  saveUsername = () => {
-    AsyncStorage.setItem('USERNAME', this.state.username);
-  };
+  saveUsername = () => { AsyncStorage.setItem('USERNAME', this.state.username); };
 
-  saveBio = () => {
-    AsyncStorage.setItem('BIO', this.state.bio);
-  };
+  saveBio = () => { AsyncStorage.setItem('BIO', this.state.bio); };
 
   chooseFile = () => {
     var options = {
       title: 'Select Profile Photo',
       quality: 1.0,
-      storageOptions: {
-        skipBackup: true,
-        path: 'images',
-      },
+      storageOptions: { skipBackup: true, path: 'images', },
     };
-
     ImagePicker.showImagePicker(options, (response) => {
       console.log('Response = ', response);
-
       if (response.didCancel) {
         console.log('User cancelled photo picker');
       } else if (response.error) {
         console.log('ImagePicker Error: ', response.error);
       } else {
         let source = response;
-
-        this.setState({
-          dpPath: source.uri,
-        });
-
+        this.setState({ dpPath: source.uri, });
         AsyncStorage.setItem('Image_id_2', this.state.dpPath);
       }
     });
@@ -73,32 +60,21 @@ export default class Profile extends Component {
       this.setState({ dpPath: value });
     });
     AsyncStorage.getItem('USERNAME').then((value) => {
-      if (value) {
-        this.setState({ username: (value || this.state.username).toString() });
-      }
+      if (value) { this.setState({ username: (value || this.state.username).toString() }); }
     });
     AsyncStorage.getItem('BIO').then((value) => {
-      if (value) {
-        this.setState({ bio: (value || this.state.bio).toString() });
-      }
+      if (value) { this.setState({ bio: (value || this.state.bio).toString() }); }
     });
     AsyncStorage.getItem('PRESENT').then((value) => {
-      if (value) {
-        this.setState({ present: JSON.parse(value || this.state.present) });
-      }
+      if (value) { this.setState({ present: JSON.parse(value || this.state.present) }); }
     });
     AsyncStorage.getItem('TOTAL').then((value) => {
-      if (value) {
-        this.setState({ total: JSON.parse(value || this.state.total) });
-      }
+      if (value) { this.setState({ total: JSON.parse(value || this.state.total) }); }
     });
   };
 
   render() {
-    var overall_attendance = (
-      (this.state.present / this.state.total) *
-      100
-    ).toFixed(2);
+    var overall_attendance = ((this.state.present / this.state.total) * 100).toFixed(2);
     return (
       <>
         <ScrollView
@@ -108,61 +84,62 @@ export default class Profile extends Component {
               onRefresh={this._onRefresh}
             />
           }>
-          <View style={styles.container}>
-            <View style={styles.header}></View>
-            <>
-              {this.state.dpPath ? (
-                <Image source={{ uri: this.state.dpPath }} style={styles.avatar} />
-              ) : (
-                  <Image style={styles.avatar} source={require('./avatar.png')} />
-                )}
-            </>
-            <View style={styles.body}>
-              <View style={styles.bodyContent}>
-                <Text style={styles.name}>{this.state.username}</Text>
-                <Text style={styles.bio}>{this.state.bio}</Text>
-                <View style={styles.buttonContainer}>
-                  <TouchableOpacity
-                    style={styles.button}
-                    onPress={this.chooseFile.bind(this)}>
-                    <Text style={{ color: 'grey', padding: 5 }}>Update Photo</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.button}>
-                    <TextInput
-                      style={{ padding: 5 }}
-                      alignItems="center"
-                      placeholder="Update Username"
-                      returnKeyLabel={'next'}
-                      onChangeText={(text) => this.setState({ username: text })}
-                      onSubmitEditing={this.saveUsername}
-                    />
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.button}>
-                    <TextInput
-                      style={{ padding: 5 }}
-                      alignItems="center"
-                      placeholder="Update Bio"
-                      returnKeyLabel={'next'}
-                      onChangeText={(text) => this.setState({ bio: text })}
-                      onSubmitEditing={this.saveBio}
-                    />
-                  </TouchableOpacity>
-                </View>
-                <Text style={styles.listItemCont}>
-                  Overall attendance : {overall_attendance >= 0 ? overall_attendance : 0} %
-              </Text>
-                <>
-                  {overall_attendance > 60 ? (
-                    <Text style={[styles.listItemCont, { color: 'limegreen' }]}>
-                      Well done! Keep it up! 👍
-                    </Text>
-                  ) : (
-                      <Text style={[styles.listItemCont, { color: 'red' }]}>
-                        Don't miss the next class! 🙄
-                      </Text>
-                    )}
-                </>
+          <View style={styles.header}></View>
+          <>
+            {this.state.dpPath ? (
+              <Image source={{ uri: this.state.dpPath }} style={styles.avatar} />
+            ) : (
+                <Image style={styles.avatar} source={require('./avatar.png')} />
+              )}
+          </>
+          <View style={styles.body}>
+            <View style={styles.bodyContent}>
+              <Text style={styles.name}>{this.state.username}</Text>
+              <Text style={styles.bio}>{this.state.bio}</Text>
+              <View style={styles.buttonContainer}>
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={this.chooseFile.bind(this)}>
+                  <Text style={{ color: 'grey', padding: 5 }}>Update Photo</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.button}>
+                  <TextInput
+                    style={{ padding: 5, color: "grey" }}
+                    alignItems="center"
+                    placeholder="Update Username"
+                    returnKeyLabel={'next'}
+                    onChangeText={(text) => this.setState({ username: text })}
+                    onSubmitEditing={this.saveUsername}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.button}>
+                  <TextInput
+                    style={{ padding: 5, color: "grey" }}
+                    alignItems="center"
+                    placeholder="Update Bio"
+                    returnKeyLabel={'next'}
+                    onChangeText={(text) => this.setState({ bio: text })}
+                    onSubmitEditing={this.saveBio}
+                  />
+                </TouchableOpacity>
               </View>
+              <View style={styles.listItemView}>
+                <Text style={styles.listItemText}>Overall attendance : {overall_attendance >= 0 ? overall_attendance : 0} % </Text>
+                <TouchableOpacity onPress={this._onRefresh.bind(this)}>
+                  <Text style={styles.listItemTouch}>🔄</Text>
+                </TouchableOpacity>
+              </View>
+              <>
+                {overall_attendance >= 60 ? (
+                  <Text style={[styles.listItemCont, { color: 'limegreen' }]}>
+                    Well done! Keep it up! 👍
+                  </Text>
+                ) : (
+                    <Text style={[styles.listItemCont, { color: 'red' }]}>
+                      Don't miss the next class! 🙄
+                    </Text>
+                  )}
+              </>
             </View>
           </View>
         </ScrollView>
@@ -222,6 +199,37 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: '#fff',
   },
+  listItemView: {
+    marginRight: 5,
+    marginLeft: 5,
+    marginBottom: 5,
+    marginTop: 50,
+    width: 315,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    padding: 15,
+    flexDirection: "row",
+    borderRadius: 5,
+    marginTop: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  listItemText: {
+    flex: 1,
+    alignItems: "flex-start",
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#24a0ed',
+  },
+  listItemTouch: {
+    flex: 1,
+    fontSize: 18,
+    alignItems: "flex-end",
+  },
   listItemCont: {
     marginRight: 5,
     marginLeft: 5,
@@ -232,7 +240,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
     padding: 15,
-    fontSize: 20,
+    fontSize: 18,
     borderRadius: 5,
     marginTop: 15,
     shadowColor: '#000',

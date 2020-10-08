@@ -1,15 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, Button, StyleSheet, FlatList, ScrollView, RefreshControl, } from 'react-native';
+import { View, Text, Button, StyleSheet, FlatList, ScrollView, RefreshControl, TouchableOpacity, Alert } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-
-const defaultState = {
-  subjects: [],
-  text: '',
-  present_count: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  total_count: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  present: 0,
-  total: 0,
-};
 
 function fetchData(timeout) {
   return new Promise((resolve) => {
@@ -17,22 +8,18 @@ function fetchData(timeout) {
   });
 }
 
-// const [currentDate, setCurrentDate] = useState('');
-
-// useEffect(() => {
-//   var date = new Date().getDate(); //Current Date
-//   var month = new Date().getMonth() + 1; //Current Month
-//   var year = new Date().getFullYear(); //Current Year
-//   setCurrentDate(date + '/' + month + '/' + year + ' ' + hours + ':' + min + ':' + sec);
-// }, []);
-
 export default class MarkAttendanceScreen extends Component {
   _isMounted = false;
 
   constructor(props) {
     super(props);
     this.state = {
-      ...defaultState,
+      subjects: [],
+      text: '',
+      present_count: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      total_count: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      present: 0,
+      total: 0,
       refreshing: false,
     };
   }
@@ -64,11 +51,24 @@ export default class MarkAttendanceScreen extends Component {
   };
 
   resetvalues = () => {
-    this.setState({
-      ...defaultState,
-      subjects: this.state.subjects,
-      text: this.state.text,
-    });
+    Alert.alert(
+      'Reset attendance',
+      'Are you sure you want to reset your attendance?',
+      [
+        { text: 'NO', style: 'cancel' },
+        {
+          text: 'YES', onPress: () => {
+            {
+              AsyncStorage.setItem('PRESENT_COUNT', JSON.stringify([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]));
+              AsyncStorage.setItem('TOTAL_COUNT', JSON.stringify([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]));
+              AsyncStorage.setItem('PRESENT', JSON.stringify(0));
+              AsyncStorage.setItem('TOTAL', JSON.stringify(0));
+            }
+            this._onRefresh();
+          }
+        },
+      ]
+    );
   };
 
   _onRefresh = () => {
@@ -85,28 +85,16 @@ export default class MarkAttendanceScreen extends Component {
     this.setState({ refreshing: false });
     Subjects.all((subjects) => this.setState({ subjects: subjects || [] }));
     AsyncStorage.getItem('PRESENT_COUNT').then((value) => {
-      if (value) {
-        this.setState({
-          present_count: JSON.parse(value || this.state.present_count),
-        });
-      }
+      if (value) { this.setState({ present_count: JSON.parse(value || this.state.present_count), }); }
     });
     AsyncStorage.getItem('TOTAL_COUNT').then((value) => {
-      if (value) {
-        this.setState({
-          total_count: JSON.parse(value || this.state.total_count),
-        });
-      }
+      if (value) { this.setState({ total_count: JSON.parse(value || this.state.total_count), }); }
     });
     AsyncStorage.getItem('PRESENT').then((value) => {
-      if (value) {
-        this.setState({ present: JSON.parse(value || this.state.present) });
-      }
+      if (value) { this.setState({ present: JSON.parse(value || this.state.present) }); }
     });
     AsyncStorage.getItem('TOTAL').then((value) => {
-      if (value) {
-        this.setState({ total: JSON.parse(value || this.state.total) });
-      }
+      if (value) { this.setState({ total: JSON.parse(value || this.state.total) }); }
     });
   }
 
@@ -129,6 +117,9 @@ export default class MarkAttendanceScreen extends Component {
               (
                 <>
                   <View style={styles.dateContainer}>
+                    <TouchableOpacity onPress={this._onRefresh.bind(this)}>
+                      <Text style={{ fontSize: 15, color: "#fff", paddingLeft: 15 }}>Refresh</Text>
+                    </TouchableOpacity>
                     <View style={{ flex: 1, alignItems: "flex-end" }}>
                       <Text style={styles.date}>{date}</Text>
                     </View>
@@ -137,6 +128,9 @@ export default class MarkAttendanceScreen extends Component {
                     <View style={{ flex: 1, alignItems: "flex-start" }}>
                       <Text style={{ fontSize: 20, color: "#fff", }}>{monthNames[month]}{"\n"}{year}</Text>
                     </View>
+                    <TouchableOpacity onPress={this.resetvalues.bind(this)}>
+                      <Text style={{ fontSize: 15, color: "#fff", paddingRight: 15 }}>Reset</Text>
+                    </TouchableOpacity>
                   </View>
                   <FlatList
                     style={styles.list}
@@ -188,7 +182,8 @@ export default class MarkAttendanceScreen extends Component {
                     Go to the Subjects tab & add your subjects first.{"\n"}Then come to this tab and pull to refresh.
                 </Text>
                 </ScrollView>
-              )}
+              )
+          }
         </>
       </View >
     );

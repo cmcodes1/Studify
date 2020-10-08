@@ -20,25 +20,12 @@ const TasksStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
 
 class MarkAttendanceStackScreen extends MarkAttendanceScreen {
-  _onItemPressed() {
-    this.resetvalues();
-  }
   render() {
     return (
       <MarkAttendanceStack.Navigator>
         <MarkAttendanceStack.Screen
           name="Mark Attendance"
           component={MarkAttendanceScreen}
-          options={{
-            headerRight: () => (
-              <Button
-                style={{ paddingRight: 5 }}
-                onPress={this._onItemPressed.bind(this)}
-                title="Reset"
-                color="#24a0ed"
-              />
-            ),
-          }}
         />
       </MarkAttendanceStack.Navigator>
     );
@@ -96,7 +83,6 @@ function ProfileStackScreen() {
 }
 
 export default function App() {
-  const isLoggedIn = true;
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -104,15 +90,11 @@ export default function App() {
         screenOptions={({ route }) => ({
           tabBarIcon: ({ color }) => {
             if (route.name === 'Attendance') {
-              return (
-                <FontAwesomeIcon icon={faBookmark} size={25} color={color} />
-              );
+              return (<FontAwesomeIcon icon={faBookmark} size={25} color={color} />);
             } else if (route.name === 'Subjects') {
               return <FontAwesomeIcon icon={faFileAlt} size={25} color={color} />;
             } else if (route.name === 'Time Table') {
-              return (
-                <FontAwesomeIcon icon={faNewspaper} size={33} color={color} />
-              );
+              return (<FontAwesomeIcon icon={faNewspaper} size={33} color={color} />);
             } else if (route.name === 'Tasks') {
               return <FontAwesomeIcon icon={faCheck} size={25} color={color} />;
             } else if (route.name === 'Profile') {

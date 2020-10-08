@@ -1,11 +1,30 @@
 import React, { Component } from 'react';
-import { View, Button, StyleSheet, Image } from 'react-native';
+import { View, Button, StyleSheet, Image, ScrollView, RefreshControl } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import ImagePicker from 'react-native-image-picker';
 
+function fetchData(timeout) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, timeout);
+  });
+}
+
 export default class TimeTableScreen extends Component {
-  state = {
-    filePath: 'val',
+
+  constructor() {
+    super();
+    this.state = {
+      filePath: 'val',
+    };
+  }
+
+  _onRefresh = () => {
+    this.setState({ refreshing: true }, () => {
+      this.componentDidMount();
+    });
+    fetchData().then(() => {
+      this.setState({ refreshing: false });
+    });
   };
 
   chooseFile = () => {
@@ -23,15 +42,13 @@ export default class TimeTableScreen extends Component {
 
       if (response.didCancel) {
         console.log('User cancelled photo picker');
-      } else if (response.error) {
+      }
+      else if (response.error) {
         console.log('ImagePicker Error: ', response.error);
-      } else {
+      }
+      else {
         let source = response;
-
-        this.setState({
-          filePath: source.uri,
-        });
-
+        this.setState({ filePath: source.uri, });
         AsyncStorage.setItem('Image_id_1', this.state.filePath);
       }
     });
@@ -45,17 +62,29 @@ export default class TimeTableScreen extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        {this.state.filePath ? (
-          <Image source={{ uri: this.state.filePath }} style={styles.image} />
-        ) : (
-            <Button
-              title="Choose Time Table Photo"
-              onPress={this.chooseFile.bind(this)}
-              color="#24a0ed"
+      <>
+        <ScrollView
+          contentContainerStyle={styles.container}
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.refreshing}
+              onRefresh={this._onRefresh}
             />
-          )}
-      </View>
+          }>
+          {
+            this.state.filePath
+              ? (
+                <Image source={{ uri: this.state.filePath }} style={styles.image} />
+              ) : (
+                <Button
+                  title="Choose Time Table Photo"
+                  onPress={this.chooseFile.bind(this)}
+                  color="#24a0ed"
+                />
+              )
+          }
+        </ScrollView>
+      </>
     );
   }
 }
@@ -65,11 +94,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
   },
   image: {
+    flex: 1,
     width: '100%',
-    aspectRatio: 1,
+    height: '100%',
     resizeMode: 'contain',
   },
 });
