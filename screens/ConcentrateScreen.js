@@ -6,7 +6,7 @@ export const TRACKS = [
     title: 'Concentration Music 1',
     artist: 'Gravity Music',
     albumArtUrl: "https://i.imgur.com/bDutmFm.jpg",
-    audioUrl: "https://www.mboxdrive.com/concentration_music_1.mp3",
+    audioUrl: "https://www.mboxdrive.com/concentration_music_01.mp3",
   },
   {
     title: 'Concentration Music 2',
