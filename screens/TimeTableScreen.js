@@ -84,11 +84,13 @@ export default class TimeTableScreen extends Component {
                 <PhotoView style={styles.image} source={{ uri: this.state.filePath }} minimumZoomScale={1} maximumZoomScale={2} />
               </ScrollView>
             ) : (
-              <Button
-                title="Choose Time Table Photo"
-                onPress={this.chooseFile.bind(this)}
-                color="#24a0ed"
-              />
+              <View style={styles.container} >
+                <Button
+                  title="Choose Time Table Photo"
+                  onPress={this.chooseFile.bind(this)}
+                  color="#24a0ed"
+                />
+              </View>
             )
         }
       </>
