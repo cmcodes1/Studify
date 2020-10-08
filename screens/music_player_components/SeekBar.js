@@ -33,7 +33,7 @@ const SeekBar = ({ trackLength, currentPosition, onSeek, onSlidingStart }) => {
         value={currentPosition}
         style={styles.slider}
         minimumTrackTintColor='#fff'
-        maximumTrackTintColor='black'
+        maximumTrackTintColor='#fff'
         thumbStyle={styles.thumb}
         trackStyle={styles.track}
       />
