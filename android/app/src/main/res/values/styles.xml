@@ -5,5 +5,12 @@
         <!-- Customize your theme here. -->
         <item name="android:textColor">#000000</item>
     </style>
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">@drawable/background_splash</item>
+        <item name="android:statusBarColor">@color/background</item>
+    </style>
+    <style name="SplashStatusBarTheme" parent="SplashScreen_SplashTheme">
+        <item name="android:statusBarColor">@color/background</item>
+    </style>
 
 </resources>

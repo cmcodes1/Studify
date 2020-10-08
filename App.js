@@ -1,11 +1,11 @@
 import 'react-native-gesture-handler';
-import React from 'react';
-import { Button } from 'react-native';
+import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faBookmark, faNewspaper, faFileAlt, faCheck, faUser, faHeadphones } from '@fortawesome/free-solid-svg-icons';
+import SplashScreen from 'react-native-splash-screen';
 import MarkAttendanceScreen from './screens/MarkAttendanceScreen';
 import TimeTableScreen from './screens/TimeTableScreen';
 import SubjectsScreen from './screens/SubjectsScreen';
@@ -56,7 +56,7 @@ function TasksStackScreen() {
 function ConcentrateStackScreen() {
   return (
     <ConcentrateStack.Navigator>
-      <ConcentrateStack.Screen name="Concentrate" component={ConcentrateScreen} />
+      <ConcentrateStack.Screen name="Concentration Music" component={ConcentrateScreen} />
     </ConcentrateStack.Navigator>
   );
 }
@@ -70,6 +70,9 @@ function ProfileStackScreen() {
 }
 
 export default function App() {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
   return (
     <NavigationContainer>
       <Tab.Navigator
