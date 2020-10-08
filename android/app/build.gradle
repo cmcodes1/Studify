@@ -136,8 +136,9 @@ android {
         applicationId "com.cmcodes.studify"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 2
-        versionName "2.0"
+        versionCode 3
+        versionName "3.0"
+        multiDexEnabled true
     }
 
     bundle {
@@ -218,6 +219,9 @@ android {
 }
 
 dependencies {
+
+    implementation 'com.android.support:multidex:1.0.3'
+
     implementation 'com.google.firebase:firebase-analytics:17.2.2'
 
     implementation 'com.google.firebase:firebase-auth:19.3.1'

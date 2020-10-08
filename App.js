@@ -29,30 +29,12 @@ function MarkAttendanceStackScreen() {
   );
 }
 
-class TimeTableStackScreen extends TimeTableScreen {
-  _onItemPressed() {
-    this.chooseFile();
-  }
-  render() {
-    return (
-      <TimeTableStack.Navigator>
-        <TimeTableStack.Screen
-          name="Time Table"
-          component={TimeTableScreen}
-          options={{
-            headerRight: () => (
-              <Button
-                style={{ paddingRight: 5 }}
-                onPress={this._onItemPressed.bind(this)}
-                title="Update"
-                color="#24a0ed"
-              />
-            ),
-          }}
-        />
-      </TimeTableStack.Navigator>
-    );
-  }
+function TimeTableStackScreen() {
+  return (
+    <TimeTableStack.Navigator>
+      <TimeTableStack.Screen name="Time Table" component={TimeTableScreen} />
+    </TimeTableStack.Navigator>
+  );
 }
 
 function SubjectsStackScreen() {
