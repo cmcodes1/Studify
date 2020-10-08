@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button, TextInput, StyleSheet, FlatList, Keyboard, Platform, } from 'react-native';
+import { View, Text, Button, TextInput, StyleSheet, FlatList, Keyboard, Platform } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
 export default class SubjectsScreen extends Component {
@@ -33,9 +33,7 @@ export default class SubjectsScreen extends Component {
     this.setState(
       (prevState) => {
         let subjects = prevState.subjects.slice();
-
         subjects.splice(i, 1);
-
         return { subjects: subjects };
       },
       () => Subjects.save(this.state.subjects),
@@ -45,15 +43,12 @@ export default class SubjectsScreen extends Component {
   componentDidMount() {
     Keyboard.addListener(
       isAndroid ? 'keyboardDidShow' : 'keyboardWillShow',
-      (e) =>
-        this.setState({ viewPadding: e.endCoordinates.height + viewPadding }),
+      (e) => this.setState({ viewPadding: e.endCoordinates.height + viewPadding }),
     );
-
     Keyboard.addListener(
       isAndroid ? 'keyboardDidHide' : 'keyboardWillHide',
       () => this.setState({ viewPadding: viewPadding }),
     );
-
     Subjects.all((subjects) => this.setState({ subjects: subjects || [] }));
   }
 
@@ -69,8 +64,7 @@ export default class SubjectsScreen extends Component {
             <View>
               <View style={styles.listItemCont}>
                 <Text style={[styles.listItem, { paddingLeft: 5 }]}>
-                  {' '}
-                  {item.text}{' '}
+                  {' '}{item.text}{' '}
                 </Text>
                 <View style={styles.buttonContainer}>
                   <View style={styles.button}>

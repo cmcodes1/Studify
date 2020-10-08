@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Button, StyleSheet, Image, ScrollView, RefreshControl } from 'react-native';
+import { Button, StyleSheet, Image, ScrollView, RefreshControl } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import ImagePicker from 'react-native-image-picker';
 

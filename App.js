@@ -19,17 +19,12 @@ const SubjectsStack = createStackNavigator();
 const TasksStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
 
-class MarkAttendanceStackScreen extends MarkAttendanceScreen {
-  render() {
-    return (
-      <MarkAttendanceStack.Navigator>
-        <MarkAttendanceStack.Screen
-          name="Mark Attendance"
-          component={MarkAttendanceScreen}
-        />
-      </MarkAttendanceStack.Navigator>
-    );
-  }
+function MarkAttendanceStackScreen() {
+  return (
+    <MarkAttendanceStack.Navigator>
+      <MarkAttendanceStack.Screen name="Mark Attendance" component={MarkAttendanceScreen} />
+    </MarkAttendanceStack.Navigator>
+  );
 }
 
 class TimeTableStackScreen extends TimeTableScreen {
