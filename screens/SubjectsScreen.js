@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button, TextInput, StyleSheet, FlatList, Keyboard, Platform, TouchableOpacity } from 'react-native';
+import { View, Text, Button, TextInput, StyleSheet, FlatList, Keyboard, Platform } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
 export default class SubjectsScreen extends Component {
