@@ -9,10 +9,13 @@
   <img src="https://img.shields.io/badge/Language-JavaScript-f0db4f.svg" /> <br/> <br/> <br/>
 </p>
 <p align="center">
-  <img height="600px" width="300px" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Profile.png" />
-  <img height="600px" width="300px" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Attendance.png" />
-  <img height="600px" width="300px" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Time%20Table.png" />
-  <img height="600px" width="300px" src="https://github.com/cmcodes1/Studify/blob/master/presentation/To%20Do%20List.png" />
-  <img height="600px" width="300px" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Subjects.png" /> <br/>
+  <img height="600px" width="300px" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Studify%20Screens/Splash%20Screen.png" />
+  <img height="600px" width="300px" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Studify%20Screens/Mark%20Attendance%20Screen.png" />
+  <img height="600px" width="300px" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Studify%20Screens/Subjects%20Screen.png" />
+  <img height="600px" width="300px" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Studify%20Screens/Time%20Table%20Screen.png" />
+  <img height="600px" width="300px" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Studify%20Screens/Tasks%20Screen.png" />
+  <img height="600px" width="300px"
+    src="https://github.com/cmcodes1/Studify/blob/master/presentation/Studify%20Screens/Concentration%20Music%20Screen.png" />
+  <img height="600px" width="300px" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Studify Screens/Profile.png" /> <br/>
 </p>
 <h1 align="center"><b><a href="https://play.google.com/store/apps/details?id=com.cmcodes.studify">CLICK HERE TO DOWNLOAD FROM THE PLAY STORE</a></b></h1>
