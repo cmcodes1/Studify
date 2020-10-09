@@ -16,6 +16,6 @@
   <img height="600px" width="300px" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Studify%20Screens/Tasks%20Screen.png" />
   <img height="600px" width="300px"
     src="https://github.com/cmcodes1/Studify/blob/master/presentation/Studify%20Screens/Concentration%20Music%20Screen.png" />
-  <img height="600px" width="300px" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Studify Screens/Profile%20Screen.png" /> <br/>
+  <img height="600px" width="300px" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Studify%20Screens/Profile%20Screen.png" /> <br/>
 </p>
 <h1 align="center"><b><a href="https://play.google.com/store/apps/details?id=com.cmcodes.studify">CLICK HERE TO DOWNLOAD FROM THE PLAY STORE</a></b></h1>
