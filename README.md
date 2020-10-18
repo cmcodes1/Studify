@@ -6,7 +6,9 @@
   <img src="https://img.shields.io/badge/App_Size-26_MB-orange.svg" />
   <img src="https://img.shields.io/badge/Editor-VS_Code-0078d7.svg" />
   <img src="https://img.shields.io/badge/Framework-React_Native-61dbfb.svg" />
-  <img src="https://img.shields.io/badge/Language-JavaScript-f0db4f.svg" /> <br/> <br/> <br/>
+  <img src="https://img.shields.io/badge/Language-JavaScript-f0db4f.svg" />
+  <img src="https://img.shields.io/badge/Rating-4.9-greeen.svg" />
+  <img src="https://img.shields.io/badge/Downloads-100+-blue.svg" /> <br/> <br/> <br/>
 </p>
 <p align="center">
   <img height="600px" width="300px" src="https://github.com/cmcodes1/Studify/blob/master/presentation/Studify%20Screens/Splash%20Screen.png" />
